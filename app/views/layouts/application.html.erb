@@ -36,8 +36,7 @@
             <%= link_to("ユーザー一覧", "/users/index") %>
           </li>
           <li>
-            
-            <%=  link_to("ログアウト","/logout",{method: "post"})%>
+            <%= link_to("ログアウト", logout_path, data: {turbo_method: :delete}) %>
           </li>
         <% else %>
           
