@@ -1,9 +1,8 @@
 class User < ApplicationRecord
+  has_secure_password
 
-    has_secure_password
+  validates :name, { presence: true }
+  validates :email, { presence: true, uniqueness: true }
 
-    #nameカラムの空値をなくす。
-    validates :name,{presence: true}
-    #emilsカラムの空値と重複をなくす
-    validates :email,{presence: true, uniqueness: true}
+  has_many :posts
 end

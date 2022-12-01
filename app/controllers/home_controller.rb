@@ -1,6 +1,6 @@
 class HomeController < ApplicationController
-    before_action :forbid_login_user,{only:[:top]}
+  before_action :forbid_login_user, { only: [:top] }
 
-    def top
-    end    
+  def top
+  end
 end
