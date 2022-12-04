@@ -1,0 +1,4 @@
+<h1>研究室一覧</h1>
+<% @laboratories.each do |laboratory| %>
+   <%= link_to(laboratory.name, "laboratories/#{laboratory.id}/show") %>
+<% end %>

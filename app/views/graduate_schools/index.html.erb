@@ -1,0 +1,4 @@
+<h1>大学院一覧</h1>
+<% @graduate_schools.each do |graduate_school| %>
+   <%= link_to(graduate_school.graduate_school_name, "/graduate_schools/#{graduate_school.id}/laboratories") %>
+<% end %>

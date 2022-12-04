@@ -14,9 +14,9 @@
     <header>
       <div class="header-logo">
         <% if @current_user %>
-          <%= link_to("大学院一覧", "/college/graduate_school") %>
+          <%= link_to("大学院一覧", graduate_schools_index_path) %>
         <% else %>
-          <%= link_to("初期画面", "/home/top") %>
+          <%= link_to("topページ", "/home/top") %>
         <% end %>
       </div>
       <ul class="header-menus">
@@ -27,10 +27,10 @@
           </li>
           
           <li>
-            <%= link_to("投稿一覧", "/posts/index") %>
+            <%= link_to("投稿一覧", "") %>
           </li>
           <li>
-            <%= link_to("新規投稿", "/posts/new") %>
+            <%= link_to("新規投稿", "") %>
           </li>
           <li>
             <%= link_to("ユーザー一覧", "/users/index") %>

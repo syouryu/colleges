@@ -51,7 +51,7 @@ class UsersController < ApplicationController
     if @user && @user.authenticate(params[:password])
       session[:user_id] = @user.id
       flash[:notice] = 'ログインしました'
-      redirect_to('/posts/index')
+      redirect_to(graduate_schools_index_path)
     else
       @error_message = 'メールアドレスまたはパスワードが間違っています'
       @email = params[:email]
@@ -70,6 +70,6 @@ class UsersController < ApplicationController
     return unless @current_user.id != params[:id].to_i
 
     flash[:notice] = '権限がありません'
-    redirect_to('/posts/index')
+    redirect_to(graduate_schools_index_path)
   end
 end

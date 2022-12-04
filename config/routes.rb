@@ -11,10 +11,11 @@ Rails.application.routes.draw do
   get "users/index" => "users#index"
   get "users/:id" => "users#show"
 
-  get "college/graduate_school" => "college#graduate_school"
-  get "college/laboratory" => "college#laboratory"
+  get "graduate_schools/index" => "graduate_schools#index" 
+  get "graduate_schools/:id/laboratories" => "graduate_schools#laboratories"
+  get "graduate_schools/:id/laboratories/:id/show" => "laboratories#show", as: "graduate_schools_laboratory" 
 
-  get "posts/index" => "posts#index"
+  post "posts/" => "posts#create"
 
   # Defines the root path route ("/")
   # root "articles#index"
