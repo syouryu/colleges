@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   post "/posts" => "posts#create"
   get "graduate_schools/:graduate_school_id/laboratories/:laboratory_id/posts/:post_id/edit" => "posts#edit", as: 'edit_post'
   # TODO: id名を個別に修正する必要あり
-  post "graduate_schools/:id/laboratories/:id/posts/:id/update" => "posts#update"
-  post "graduate_schools/:id/laboratories/:id/posts/:id/destroy" => "posts#destroy"
+  post "graduate_schools/:graduate_school_id/laboratories/:laboratory_id/posts/:post_id/update" => "posts#update", as: 'update_post'
+  post "graduate_schools/:graduate_school_id/laboratories/:laboratory_id/posts/:post_id/destroy" => "posts#destroy", as: 'destroy_post'
 
   # Defines the root path route ("/")
   # root "articles#index"

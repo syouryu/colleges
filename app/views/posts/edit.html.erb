@@ -1,7 +1,7 @@
 <div class="main posts-new">
   <div class="container">
-    <h1 class="form-heading">編集する</h1>
-    <%= form_tag("/graduate_schools/#{@laboratory.graduate_school_id}/laboratories/#{@laboratory.id}/posts/#{@post.id}/update") do %>
+    <h1 class="form-heading">編集,削除する</h1>
+    <%= form_tag (update_post_path(graduate_school_id: @laboratory.graduate_school_id, laboratory_id: @post.laboratory_id, post_id: @post.id)) do %>
       <div class="form">
         <div class="form-body">
           <textarea name="title"><%= @post.title %></textarea>
@@ -9,6 +9,9 @@
           <input type="submit" value="保存">
         </div>
       </div>
+    <% end %>
+    <%= form_tag (destroy_post_path(graduate_school_id: @laboratory.graduate_school_id, laboratory_id: @post.laboratory_id, post_id: @post.id)) do %>
+      <input type="submit" value="削除">
     <% end %>
   </div>
 </div>

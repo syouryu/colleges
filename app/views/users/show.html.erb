@@ -13,12 +13,11 @@
         <% @new_posts.each do |post| %>
           <p><%= post.body %></p>
           <%# NOTE: ルーティングの定義に合わせてidを渡している %>
-          <span><%= link_to post.title, edit_post_path(
+          <%= link_to("編集", edit_post_path(
             graduate_school_id: post.laboratory.graduate_school.id,
             laboratory_id: post.laboratory.id,
             post_id: post.id
-          ) %>
-          </span>
+          )) %>
         <% end %>
       </ul>
     </div>
