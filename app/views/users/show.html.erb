@@ -9,13 +9,18 @@
     </div>
     <div>
       <h3>最近の新着投稿５件</h3>
-      <ol>
-        <li><%= @post[0] %></li>
-        <li><%= @post[1] %></li>
-        <li><%= @post[2] %></li>
-        <li><%= @post[3] %></li>
-        <li><%= @post[4] %></li>
-      </ol>
+      <ul>
+        <% @new_posts.each do |post| %>
+          <p><%= post.body %></p>
+          <%# NOTE: ルーティングの定義に合わせてidを渡している %>
+          <span><%= link_to post.title, edit_post_path(
+            graduate_school_id: post.laboratory.graduate_school.id,
+            laboratory_id: post.laboratory.id,
+            post_id: post.id
+          ) %>
+          </span>
+        <% end %>
+      </ul>
     </div>
   </div>
 </div>
