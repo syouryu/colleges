@@ -7,5 +7,15 @@
         <%= link_to("編集", "/users/#{@user.id}/edit") %>
       <% end %>
     </div>
+    <div>
+      <h3>最近の新着投稿５件</h3>
+      <ol>
+        <li><%= @post[0] %></li>
+        <li><%= @post[1] %></li>
+        <li><%= @post[2] %></li>
+        <li><%= @post[3] %></li>
+        <li><%= @post[4] %></li>
+      </ol>
+    </div>
   </div>
 </div>

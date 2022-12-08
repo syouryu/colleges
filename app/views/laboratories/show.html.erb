@@ -1,15 +1,19 @@
 <%= @laboratory.name%><br>
-<%= @laboratory.content%>
+<%= @laboratory.content%><br>
 
-<%= form_with model: @post  do |form| %>
-   <%= form.text_field :title %>
-   <%= form.text_area :body %>
-   <%= hidden_field_tag :user_id, @current_user.id %>
-   <%= hidden_field_tag :laboratory_id, @laboratory.id %>
-   <%= form.submit %>
+<% if @current_user %>
+  <%= form_with model: @post  do |form| %>
+    <%= form.text_field :title %>
+    <%= form.text_area :body %>
+    <%= hidden_field_tag :user_id, @current_user.id %>
+    <%= hidden_field_tag :laboratory_id, @laboratory.id %>
+    <%= form.submit("投稿") %>
+  <% end %>
 <% end %>
-
+  
+ 
 <% @posts.each do |post| %>
   <%= post.body %>
-  <%= post.created_at %><br>
-<% end %>  
+  <%= post.created_at %>
+  <%= link_to("編集", "/graduate_schools/#{@laboratory.graduate_school_id}/laboratories/#{@laboratory.id}/posts/#{post.id}/edit") %><br>
+<% end %>

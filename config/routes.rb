@@ -15,7 +15,10 @@ Rails.application.routes.draw do
   get "graduate_schools/:id/laboratories" => "graduate_schools#laboratories"
   get "graduate_schools/:id/laboratories/:id/show" => "laboratories#show", as: "graduate_schools_laboratory" 
 
-  post "posts/" => "posts#create"
+  post "/posts" => "posts#create"
+  get "graduate_schools/:id/laboratories/:id/posts/:id/edit" => "posts#edit"
+  post "graduate_schools/:id/laboratories/:id/posts/:id/update" => "posts#update"
+  post "graduate_schools/:id/laboratories/:id/posts/:id/destroy" => "posts#destroy"
 
   # Defines the root path route ("/")
   # root "articles#index"

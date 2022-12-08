@@ -9,6 +9,9 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find_by(id: params[:id])
+    # @posts = Post.where(user_id: @current_user.id).order("created_at DESC").limit(5)
+    # @post = @post.all.map{|post|[post.title,post.body]}
+    @post = Post.order("created_at DESC").limit(5).map{|post|[post.title, post.body]}
   end
 
   def new
@@ -63,7 +66,7 @@ class UsersController < ApplicationController
   def logout
     session[:user_id] = nil
     flash[:notice] = 'ログアウトしました'
-    redirect_to('/login')
+    redirect_to('/home/top')
   end
 
   def ensure_correct_user
