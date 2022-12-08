@@ -11,7 +11,7 @@ class UsersController < ApplicationController
     @user = User.find_by(id: params[:id])
     # @posts = Post.where(user_id: @current_user.id).order("created_at DESC").limit(5)
     # @post = @post.all.map{|post|[post.title,post.body]}
-    @post = Post.order("created_at DESC").limit(5).map{|post|[post.title, post.body]}
+    @new_posts = Post.order('created_at DESC').limit(5)
   end
 
   def new

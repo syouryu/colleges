@@ -18,16 +18,18 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find_by(id: params[:id])
-    @laboratory = Laboratory.find_by(id: params[:id])
-  end  
+    # NOTE: id名をルーティングに合わせて修正した
+    @post = Post.find_by(id: params[:post_id])
+    @laboratory = Laboratory.find_by(id: params[:laboratory_id])
+  end
 
   def update
+    # TODO: id名をルーティングに合わせて修正する必要あり
     @laboratory = Laboratory.find_by(id: params[:id])
     @post = Post.find_by(id: params[:id])
     @post.title = params[:title]
     @post.body = params[:body]
     @post.save
     redirect_to("/graduate_schools/#{@laboratory.graduate_school_id}/laboratories/#{@post.laboratory_id}/show")
-  end  
+  end
 end

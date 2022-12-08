@@ -16,6 +16,6 @@ class ApplicationController < ActionController::Base
     return unless @current_user
 
     flash[:notice] = 'すでにログインしています'
-    redirect_to('graduate_schools/index', allow_other_host: true)
+    redirect_to('/graduate_schools/index', allow_other_host: true)
   end
 end
