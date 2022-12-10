@@ -5,5 +5,5 @@ class User < ApplicationRecord
   validates :email, { presence: true, uniqueness: true }
 
   has_many :posts
-  has_many :likes
+  has_many :likes, dependent: :destroy
 end

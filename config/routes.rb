@@ -21,6 +21,9 @@ Rails.application.routes.draw do
   post "graduate_schools/:graduate_school_id/laboratories/:laboratory_id/posts/:post_id/update" => "posts#update", as: 'update_post'
   post "graduate_schools/:graduate_school_id/laboratories/:laboratory_id/posts/:post_id/destroy" => "posts#destroy", as: 'destroy_post'
 
+  post "posts/:post_id/likes" => "likes#create", as: 'post_likes'
+  delete "posts/:post_id/likes/:id" => "likes#destroy", as: 'post_like'
+
   # Defines the root path route ("/")
   # root "articles#index"
   get "/" => "home#top"

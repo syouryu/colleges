@@ -1,5 +1,5 @@
-<%= @laboratory.name%><br>
-<%= @laboratory.content%><br>
+<%= @laboratory.name %><br>
+<%= @laboratory.content %><br>
 
 <% if @current_user %>
   <%= form_with model: @post  do |form| %>
@@ -14,5 +14,25 @@
 <% @posts.each do |post| %>
   <%= post.body %>
   <%= post.created_at %>
-  <%= link_to("編集", "/graduate_schools/#{@laboratory.graduate_school_id}/laboratories/#{@laboratory.id}/posts/#{post.id}/edit") %><br>
+
+  <%if @current_user %>
+    <% if post.liked?(@current_user) %>
+      <%= link_to post_like_path(post.id), data: {"turbo_method": :delete} do %>
+        <span style="color:red;">❤︎</span>
+        <%= post.likes.count %>
+      <% end %>
+    <% else %>
+      <%= link_to post_likes_path(post.id), data: { "turbo_method": :post } do %>
+        <span>❤︎</span>
+        <%= post.likes.count %>
+      <% end %>
+    <% end %>
+  <% else %>
+    <span>❤︎</span>
+    <%= post.likes.count %>
+  <% end %>
+
+  <% if post.user_id == @current_user&.id %>
+    <%= link_to("編集", "/graduate_schools/#{@laboratory.graduate_school_id}/laboratories/#{@laboratory.id}/posts/#{post.id}/edit") %>
+  <% end %>
 <% end %>
