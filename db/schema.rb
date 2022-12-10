@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_11_30_154404) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_10_110658) do
   create_table "graduate_schools", force: :cascade do |t|
     t.string "graduate_school_name", null: false
     t.datetime "created_at", null: false
@@ -24,6 +24,15 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_154404) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["graduate_school_id"], name: "index_laboratories_on_graduate_school_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likes_on_post_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -46,6 +55,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_30_154404) do
   end
 
   add_foreign_key "laboratories", "graduate_schools"
+  add_foreign_key "likes", "posts"
+  add_foreign_key "likes", "users"
   add_foreign_key "posts", "laboratories"
   add_foreign_key "posts", "users"
 end

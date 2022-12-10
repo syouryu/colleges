@@ -2,7 +2,6 @@ class PostsController < ApplicationController
   before_action :authenticate_user
 
   def create
-    # puts params
     post_params = params[:post]
     post = Post.new(title: post_params[:title], body: post_params[:body], user_id: params[:user_id],
                     laboratory_id: params[:laboratory_id])
@@ -18,13 +17,11 @@ class PostsController < ApplicationController
   end
 
   def edit
-    # NOTE: id名をルーティングに合わせて修正した
     @post = Post.find_by(id: params[:post_id])
     @laboratory = Laboratory.find_by(id: params[:laboratory_id])
   end
 
   def update
-    # TODO: id名をルーティングに合わせて修正する必要あり
     @laboratory = Laboratory.find_by(id: params[:laboratory_id])
     @post = Post.find_by(id: params[:post_id])
     @post.title = params[:title]

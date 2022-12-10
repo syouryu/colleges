@@ -3,4 +3,5 @@ class Post < ApplicationRecord
   belongs_to :laboratory
   validates :title, { presence: true }
   validates :body, { presence: true, length: { maximum: 750 } }
+  has_many :likes
 end
