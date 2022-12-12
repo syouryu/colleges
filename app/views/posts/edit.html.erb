@@ -1,17 +1,24 @@
-<div class="main posts-new">
-  <div class="container">
-    <h1 class="form-heading">編集,削除する</h1>
+<div class="post-edit">
+
+  <div class="post-edit-logo">
+    <h1>編集,削除する</h1>
+  </div>
+
+  <div class="post-edit-content">  
     <%= form_tag (update_post_path(graduate_school_id: @laboratory.graduate_school_id, laboratory_id: @post.laboratory_id, post_id: @post.id)) do %>
-      <div class="form">
-        <div class="form-body">
-          <textarea name="title"><%= @post.title %></textarea>
-          <textarea name="body"><%= @post.body %></textarea>
-          <input type="submit" value="保存">
+      <div class="post-edit-form">
+        <div class="post-edit-form-body">
+          <h3>タイトル</h3>
+          <textarea class="post-edit-title" name="title"><%= @post.title %></textarea>
+          <h3>内容</h3>
+          <textarea class="post-edit-body" name="body"><%= @post.body %></textarea>
+          <input class="post-edit-submit" type="submit" value="保存"><br>
         </div>
       </div>
     <% end %>
     <%= form_tag (destroy_post_path(graduate_school_id: @laboratory.graduate_school_id, laboratory_id: @post.laboratory_id, post_id: @post.id)) do %>
-      <input type="submit" value="削除">
+      <input class="post-edit-destroy" type="submit" value="削除">
     <% end %>
   </div>
+
 </div>
