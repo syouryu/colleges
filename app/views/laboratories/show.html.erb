@@ -34,5 +34,5 @@
 
   <% if post.user_id == @current_user&.id %>
     <%= link_to("編集", "/graduate_schools/#{@laboratory.graduate_school_id}/laboratories/#{@laboratory.id}/posts/#{post.id}/edit") %>
-  <% end %>
+  <% end %><br>
 <% end %>

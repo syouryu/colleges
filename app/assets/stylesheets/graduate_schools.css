@@ -1,0 +1,125 @@
+html{
+    background-color: rgb(218, 215, 215);
+    color: black;
+}
+
+body{
+    margin: 0;
+    font-family: 'Yuji Syuku', serif;
+}
+
+a, li{
+    text-decoration: none;
+    list-style: none;
+}
+
+/*---- application=header　----CSS */
+header{
+    width: 100%;
+    height: 75px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header-logo{
+    margin-left: 15px;
+}
+
+.header-logo a{
+    display: inline-block; 
+    margin: 30px;
+    color: black;
+}
+
+.header-logo a:hover{
+    opacity: 0.5;
+}
+
+.header-menus{
+    display: flex;
+    justify-content: space-between;
+    height: 75px;
+    padding-right: 25px;
+    margin: 0;
+}
+
+.header-menus a{
+    display: inline-block;
+    margin: 25px;
+    color: black;
+}
+
+.header-menus a:hover{
+    opacity: 0.5;
+}
+
+/*---- flash　CSS ----*/
+.flash {
+    height: 20px;
+    color: white;
+    background: rgb(229, 219, 209);
+    text-align: center;
+    width: 100%;
+    font-size: 14px;
+}
+
+/* graduate_schools-index */
+.graduate_school{
+    flex-direction: row-reverse;
+    display: flex;
+    margin: 35px 50px 0 0;
+}
+
+.graduate_school-logo{
+    width: 15%;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    
+}
+
+.graduate_school-menu{
+    width: 85%;
+    writing-mode: vertical-rl;
+    display: flex;
+    flex-direction: column;
+}
+
+.graduate_school-menu a{
+    color: black;
+    display: inline-block;
+}
+
+.graduate_school-menu a:hover{
+    color: red;
+}
+
+/* graduate_school/laboratery */
+.laboratory{
+    flex-direction: row-reverse;
+    display: flex;
+    margin: 35px 50px 0 0;
+}
+
+.laboratory-logo{
+    width: 15%;
+    -ms-writing-mode: tb-rl;
+    writing-mode: vertical-rl;
+    
+}
+
+.laboratory-menu{
+    width: 85%;
+    writing-mode: vertical-rl;
+    display: flex;
+    flex-direction: column;
+}
+
+.laboratory-menu a{
+    color: black;
+    display: inline-block;
+    padding-right: 8px;
+}
+
+.laboratory-menu a:hover{
+    color: red;
+}
