@@ -1,48 +1,57 @@
 <div class="laboratory-show">
+  <div class="laboratory-shows">
 
-  <div class="logo">
-    <%= @laboratory.name %><br>
-    <%= @laboratory.content %><br>
-  </div>
-
-  <div class="form">
-    <% if @current_user %>
-      <%= form_with model: @post  do |form| %>
-        <%= form.text_field :title %>
-        <%= form.text_area :body %>
-        <%= hidden_field_tag :user_id, @current_user.id %>
-        <%= hidden_field_tag :laboratory_id, @laboratory.id %>
-        <%= form.submit("投稿") %>
-      <% end %>
-    <% end %>
-  </div>
-  
-  <div class="content">
-    <% @posts.each do |post| %>
-      <%= post.body %>
-      <%= post.created_at %>
-
-      <%if @current_user %>
-        <% if post.liked?(@current_user) %>
-          <%= link_to post_like_path(post.id), data: {"turbo_method": :delete} do %>
-            <img scr="good.png">
-            <%= post.likes.count %>
-          <% end %>
-        <% else %>
-          <%= link_to post_likes_path(post.id), data: { "turbo_method": :post } do %>
-            <img src="bad.png">
-            <%= post.likes.count %>
+    <div class="logo">
+      <h1><%= @laboratory.name %></h1><br>
+      <p><%= @laboratory.content %></p><br>
+    </div>
+    
+    <div class="laboratory-show-content">
+      <div class="form">
+        <% if @current_user %>
+          <%= form_with model: @post  do |form| %>
+            <p>タイトル</p>
+            <%= form.text_field :title %><br>
+            <p>内容</p>
+            <%= form.text_area :body %>
+            <%= hidden_field_tag :user_id, @current_user.id %>
+            <%= hidden_field_tag :laboratory_id, @laboratory.id %><br>
+            <%= form.submit("投稿") %>
           <% end %>
         <% end %>
-      <% else %>
-        <img scr="good.png">
-        <%= post.likes.count %>
-      <% end %>
+      </div>
+      
+      <div class="content">
+        <% @posts.each do |post| %>
+          <div class="content-main">
+            <h4><%= post.body %></h4><br>
+            <p><%= post.created_at %></p>
 
-      <% if post.user_id == @current_user&.id %>
-        <%= link_to("編集", "/graduate_schools/#{@laboratory.graduate_school_id}/laboratories/#{@laboratory.id}/posts/#{post.id}/edit") %>
-      <% end %><br>
-    <% end %>
+            <div class="content-like">
+              <%if @current_user %>
+                <% if post.liked?(@current_user) %>
+                  <%= link_to post_like_path(post.id), data: {"turbo_method": :delete} do %>
+                    <span>❤️<span>
+                    <%= post.likes.count %><br>
+                  <% end %>
+                <% else %>
+                  <%= link_to post_likes_path(post.id), data: { "turbo_method": :post } do %>
+                    <span >🖤</span>
+                    <%= post.likes.count %><br>
+                  <% end %>
+                <% end %>
+              <% else %>
+                <span>❤️<span>
+                <%= post.likes.count %><br>
+              <% end %>
+
+              <% if post.user_id == @current_user&.id %>
+                <%= link_to("編集", "/graduate_schools/#{@laboratory.graduate_school_id}/laboratories/#{@laboratory.id}/posts/#{post.id}/edit") %>
+              <% end %><br>
+            </div>  
+          </div>
+        <% end %>
+      </div>
+    </div>
   </div>
-  
 </div>  

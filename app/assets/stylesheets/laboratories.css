@@ -11,6 +11,11 @@ body{
 a, li{
     text-decoration: none;
     list-style: none;
+    color: black;
+}
+
+a:hover{
+    opacity: 0.5;
 }
 
 /*---- application=header　----CSS */
@@ -64,4 +69,53 @@ header{
 }
 
 /* laboratory-show */
+.laboratory-show{
+    width: 100%;
+}
 
+.logo{
+    text-align: center;
+    border-bottom: thin white solid; 
+}
+
+.laboratory-show-content{
+    margin: 0 50px 0 50px;
+}
+
+.form{
+    text-align: center;
+    margin-bottom: 20px;
+    border-bottom: thin white solid;
+}
+
+.form textarea{
+    width: 350px;
+    height: 150px;
+}
+
+.form input{
+    font-family: 'Yuji Syuku', serif;
+}
+
+.form input[type="submit" i]{
+    padding-bottom: 15px;
+}
+
+.form input[type="submit" i]:hover{
+    opacity: 0.5;
+}
+
+.content-main{
+    border-bottom: thin white solid;
+    margin-bottom: 5px;
+}
+
+.content-main p{
+    margin: 0;
+    display: block;
+    text-align: right;
+}
+
+.content-like{
+    text-align: center;
+}

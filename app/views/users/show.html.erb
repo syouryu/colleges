@@ -1,25 +1,28 @@
-<div class="main user-show">
-  <div class="container">
-    <div class="user">
-      <h2><%= @user.name%></h2>
-      <p><%= @user.email%></p>
-      <% if @user.id == @current_user.id %>
-        <%= link_to("編集", "/users/#{@user.id}/edit") %>
-      <% end %>
-    </div>
-    <div>
-      <h3>最近の新着投稿５件</h3>
+<div class="user-show">
+  <div class="user-show-logo">
+    <h2><%= @user.name%></h2>
+    <p><%= @user.email%></p>
+    <% if @user.id == @current_user.id %>
+      <%= link_to("編集", "/users/#{@user.id}/edit") %>
+    <% end %>
+  </div>  
+
+  <div class="user-show-content">
+    <h3>最近の新着投稿５件</h3>
       <ul>
-        <% @new_posts.each do |post| %>
-          <p><%= post.body %></p>
-          <%# NOTE: ルーティングの定義に合わせてidを渡している %>
-          <%= link_to("編集", edit_post_path(
-            graduate_school_id: post.laboratory.graduate_school.id,
-            laboratory_id: post.laboratory.id,
-            post_id: post.id
-          )) %>
-        <% end %>
+        <div class="user-show-content-review">
+          <% @new_posts.each do |post| %>
+            <div class="user-show-comment">
+              <p><%= post.body %></p>
+              
+              <%= link_to("編集", edit_post_path(
+                graduate_school_id: post.laboratory.graduate_school.id,
+                laboratory_id: post.laboratory.id,
+                post_id: post.id
+              )) %>
+            </div>  
+          <% end %>
+        </div>
       </ul>
-    </div>
   </div>
 </div>
