@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user
 
   def create
+    @laboratory = Laboratory.find_by(id: params[:laboratory_id])
     post_params = params[:post]
     post = Post.new(title: post_params[:title], body: post_params[:body], user_id: params[:user_id],
                     laboratory_id: params[:laboratory_id])
@@ -11,8 +12,9 @@ class PostsController < ApplicationController
       flash[:notice] = '新規投稿が完了しました'
       redirect_to graduate_schools_laboratory_path(laboratory.graduate_school_id, laboratory.id)
     else
+      laboratory = post.laboratory
       flash[:notice] = '投稿できませんでした'
-      render graduate_schools_laboratory_path(laboratory.graduate_school_id, laboratory.id)
+      redirect_to graduate_schools_laboratory_path(laboratory.graduate_school.id, laboratory.id)
     end
   end
 
@@ -36,5 +38,5 @@ class PostsController < ApplicationController
     @post.destroy
     redirect_to("/graduate_schools/#{@laboratory.graduate_school_id}/laboratories/#{@post.laboratory_id}/show")
   end  
-   
+
 end
